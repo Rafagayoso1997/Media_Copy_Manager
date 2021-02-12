@@ -13,7 +13,7 @@ namespace MCP.db
         //private static int Copys_In_Progress = 0;
         //private static DbContextTransaction transaction = null;
 
-        public static media_managerEntities Context = new media_managerEntities();
+        public static media_managerEntities Context;// = new media_managerEntities();
 
         public static MediaFilesRepository MediaFilesRepo = new MediaFilesRepository();
         public static MediaGenerosRepository MediaGenerosRepo = new MediaGenerosRepository();
@@ -27,6 +27,8 @@ namespace MCP.db
         public static CopiasRepository CopiasRepo = new CopiasRepository();
         public static TipoPagosRepository TipoPagosRepo = new TipoPagosRepository();
         public static PreferencesRepository PreferenciasRepo = new PreferencesRepository();
+        public static ClientesRepository ClienteRepo = new ClientesRepository();
+        public static UsbRepository UsbRepo = new UsbRepository();
 
         public static bool SavingState = false;
 

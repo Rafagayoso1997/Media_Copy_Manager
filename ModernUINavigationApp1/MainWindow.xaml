@@ -32,6 +32,7 @@
                 <mui:Link DisplayName="Puntos de copia" Source="/gui/Pages/administracion/PPuntosCopia.xaml" />
                 <mui:Link DisplayName="Registro de copias" Source="/gui/Pages/PRegistroCopias.xaml" />
                 <mui:Link DisplayName="Trabajadores" Source="/gui/Pages/administracion/PTrabajadores.xaml" />
+                <mui:Link DisplayName="Clientes" Source="/gui/Pages/administracion/PClientes.xaml" />
                 <mui:Link DisplayName="Usuarios" Source="/gui/Pages/administracion/PUsuarios.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>

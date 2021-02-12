@@ -2,7 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using Button = System.Windows.Controls.Button;
@@ -12,7 +22,7 @@ using UserControl = System.Windows.Controls.UserControl;
 namespace MCP.gui.Pages.administracion
 {
     /// <summary>
-    /// Interaction logic for PClientes.xaml
+    /// Lógica de interacción para PClientes.xaml
     /// </summary>
     public partial class PClientes : UserControl
     {
@@ -38,9 +48,9 @@ namespace MCP.gui.Pages.administracion
             hideForm();
             State = AppMAnager.STATE_NULL;
             cliente = null;
-            
 
-           
+
+
         }
 
         public PClientes(usb usb)
@@ -67,11 +77,11 @@ namespace MCP.gui.Pages.administracion
         private void refreshGrid()
         {
             List<cliente> clientes = DBManager.ClienteRepo.List.ToList();
-            foreach(cliente cliente in clientes)
+            foreach (cliente cliente in clientes)
             {
                 Console.WriteLine(cliente.nombre_cliente);
             }
-            _dataGrid.ItemsSource =clientes;
+            _dataGrid.ItemsSource = clientes;
         }
 
 
@@ -111,7 +121,7 @@ namespace MCP.gui.Pages.administracion
             AppMAnager.restoreDefaulLabel(lApellido);
             AppMAnager.restoreDefaulLabel(lTelefono);
 
-          
+
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -133,7 +143,7 @@ namespace MCP.gui.Pages.administracion
                 AppMAnager.SetErrorTextBox(tbNombre);
                 AppMAnager.SetLabel_Error(lNombre, "Debe introducir el nombre del cliente");
             }
-          
+
 
             //Validar contraseña
             if (tbApellidos.Text.Trim().Length > 0)
@@ -153,11 +163,11 @@ namespace MCP.gui.Pages.administracion
 
             if (tbTelefono.Text.Trim().Length > 0)
             {
-               
+
                 cliente.telefono = tbTelefono.Text;
                 AppMAnager.restoreDefaultTextBox(tbTelefono);
                 AppMAnager.restoreDefaulLabel(lTelefono);
-                
+
             }
             else
             {
@@ -165,16 +175,16 @@ namespace MCP.gui.Pages.administracion
                 AppMAnager.SetErrorTextBox(tbTelefono);
                 AppMAnager.SetLabel_Error(lTelefono, "Debe introducir el teléfono del cliente");
             }
-          
 
-         
+
+
 
             if (!hasError)
             {
                 if (State == AppMAnager.STATE_INSERT)
                 {
                     cliente c = DBManager.ClienteRepo.Add(cliente);
-                    
+
                     if (usbToClient)
                     {
                         usb.id_cliente = c.id_cliente;
@@ -209,12 +219,12 @@ namespace MCP.gui.Pages.administracion
                 cliente = DBManager.ClienteRepo.FindById(id);
                 if (cliente != null)
                 {
-                        DBManager.ClienteRepo.Delete(id);
-                        refreshGrid();
+                    DBManager.ClienteRepo.Delete(id);
+                    refreshGrid();
 
-                        clearForm();
-                        hideForm();
-                    
+                    clearForm();
+                    hideForm();
+
                 }
             }
         }
@@ -230,7 +240,7 @@ namespace MCP.gui.Pages.administracion
                     tbNombre.Text = cliente.nombre_cliente;
                     tbApellidos.Text = cliente.apellidos_cliente;
                     tbTelefono.Text = cliente.telefono;
-                  
+
                     State = AppMAnager.STATE_UPDATE;
                     showForm();
                 }
@@ -273,10 +283,10 @@ namespace MCP.gui.Pages.administracion
 
         private void tbTelefono_GotFocus(object sender, RoutedEventArgs e)
         {
-           /* if (tbPassRepeat.Tag.ToString().Equals("0"))
-            {
-                tbPassRepeat.Password = "";
-            }*/
+            /* if (tbPassRepeat.Tag.ToString().Equals("0"))
+             {
+                 tbPassRepeat.Password = "";
+             }*/
         }
 
         private void tbTelefono_LostFocus(object sender, RoutedEventArgs e)
@@ -287,7 +297,7 @@ namespace MCP.gui.Pages.administracion
             }*/
         }
 
-      
+
 
         private void BtnSelect_Click(object sender, RoutedEventArgs e)
         {
@@ -315,7 +325,7 @@ namespace MCP.gui.Pages.administracion
             Button btn = (Button)sender;
             if (usbToClient)
             {
-               
+
                 btn.Visibility = Visibility.Visible;
             }
             else
