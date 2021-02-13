@@ -103,6 +103,17 @@ namespace MCP.gui.Pages
             //this.IsVisibleChanged += new DependencyPropertyChangedEventHandler(visibiliyChanged);
 
             //LoadContent();
+
+            //combo clientes
+            List<cliente> clientes = DBManager.ClienteRepo.List;
+            cbxCliente.Items.Add("- TODOS -");
+            foreach (cliente cliente in clientes)
+            {
+                string clienteNombreCompleto = cliente.nombre_cliente + " " + cliente.apellidos_cliente;
+                cbxCliente.Items.Add(clienteNombreCompleto);
+            }
+
+            cbxCliente.SelectedIndex = 0;
         }
 
         /*   public void StartContentChangesCheckig()

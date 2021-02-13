@@ -108,27 +108,35 @@ namespace MCP.db
         public Task<List<registro_copias>> FindAsync(DateTime fdesde, DateTime fhasta, int puntoCopiaId = -1, string categoria = "", int userId = -1,
             string cliente = "")
         {
+
+           
             var query = (from r in DBManager.Context.registro_copias
                          select r);
+            if (puntoCopiaId < 0 && string.IsNullOrEmpty(categoria) && userId < 0 && string.IsNullOrEmpty(cliente))
+            {
+                return query.OrderByDescending(r => r.fecha).ToListAsync();
+            }
 
-            if (fdesde != null)
-                query = query.Where(r => r.fecha.CompareTo(fdesde) >= 0);
+            else {
+                if (fdesde != null)
+                    query = query.Where(r => r.fecha.CompareTo(fdesde) >= 0);
 
-            if (fdesde != null)
-                query = query.Where(r => r.fecha.CompareTo(fhasta) <= 0);
+                if (fdesde != null)
+                    query = query.Where(r => r.fecha.CompareTo(fhasta) <= 0);
 
-            if (puntoCopiaId > 0)
-                query = query.Where(r => r.copia.punto_copia_id == puntoCopiaId);
+                if (puntoCopiaId > 0)
+                    query = query.Where(r => r.copia.punto_copia_id == puntoCopiaId);
 
-            if (categoria != null && !string.IsNullOrEmpty(categoria))
-                query = query.Where(r => r.nombre_categoria == categoria);
+                if (categoria != null && !string.IsNullOrEmpty(categoria))
+                    query = query.Where(r => r.nombre_categoria == categoria);
 
-            if (userId > 0)
-                query = query.Where(r => r.copia.user_id == userId);
+                if (userId > 0)
+                    query = query.Where(r => r.copia.user_id == userId);
 
-            if (cliente != null && !string.IsNullOrEmpty(cliente))
-                query = query.Where(r => r.nombre_cliente == cliente);
+                if (cliente != null && !string.IsNullOrEmpty(cliente))
+                    query = query.Where(r => r.nombre_cliente == cliente);
 
+            }
             Console.WriteLine(query.ToString());
 
             return query.OrderByDescending(r => r.fecha).ToListAsync();

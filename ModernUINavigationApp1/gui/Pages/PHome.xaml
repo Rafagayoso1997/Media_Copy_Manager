@@ -226,14 +226,16 @@
                     <StackPanel Orientation="Vertical" Margin="5 0 0 0">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Selección" Name="lListTile" Style="{StaticResource Heading2}" Foreground="LightSlateGray" Width="84"/>
-                            <Button Content="Copiar" Height="27" Width="80" IsEnabled="False" VerticalAlignment="Top" HorizontalAlignment="Right" Name="btnCopy" Click="BtnCopy_Click"></Button>
-                            <TextBlock Text="" Name="lCopySize" Foreground="LightSlateGray" Width="80" Margin="5 0 0 0"/>
+                            <ComboBox Name="cbxCliente" Width="130"/>
+                            <Button Content="Copiar" Height="27" Width="80" IsEnabled="False" VerticalAlignment="Top" HorizontalAlignment="Right" Name="btnCopy" Click="BtnCopy_Click" RenderTransformOrigin="1.569,0.611"></Button>
+                            
                         </StackPanel>
                         <Separator Foreground="LightSlateGray"/>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Name="lCosto" />
                             <TextBlock Text="Real:" Margin="20 0 0 0" Name="lCostoReal" />
                             <TextBox Name="tbReal" Width="70" Margin="5 0 0 0" PreviewTextInput="tbReal_PreviewTextInput" KeyDown="tbReal_KeyDown"></TextBox>
+                            <TextBlock Text="" x:Name="lCopySize" Foreground="LightSlateGray" Width="80" Margin="5 0 0 0"/>
                         </StackPanel>
                         <Separator Foreground="LightSlateGray"/>
                         <ListView Margin="0" Name="_listSeleccion"/>

@@ -28,6 +28,7 @@
             <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                 <TextBlock Text="Categoría" HorizontalAlignment="Left"/>
                 <ComboBox Name="cbxCategoria" Width="130" SelectionChanged="FilterChanged" />
+
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="20 0 0 0" Name="_spPuntoCopia">
                 <TextBlock Text="Punto de copia" HorizontalAlignment="Left"/>

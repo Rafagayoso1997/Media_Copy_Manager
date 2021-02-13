@@ -54,6 +54,10 @@ namespace MCP.gui.Pages
                 cbxCliente.Items.Add(clienteNombreCompleto);
             }
 
+            cbxCategoria.SelectedIndex = 0;
+            cbxCliente.SelectedIndex = 0;
+            cbxPuntoCopia.SelectedIndex = 0;
+
             DateTime now = DateTime.Now;
             DateTime ini = now.Date + new TimeSpan(0, 0, 0);
             _datePickerIni.SelectedDate = ini;
@@ -62,7 +66,7 @@ namespace MCP.gui.Pages
             
             prepared = false;
             //contentChanged = true;
-            _dataGrid.ItemsSource = DBManager.RegistroCopiasRepo.ListDistinctCategValues();
+           
 
             this.IsVisibleChanged += ScheduleUserControl_IsVisibleChanged;
         }
@@ -108,6 +112,7 @@ namespace MCP.gui.Pages
             {
                 categoria = cbxCategoria.SelectedItem.ToString();
             }
+
             if (cbxCliente.SelectedIndex > 0)
             {
                 cliente = cbxCliente.SelectedItem.ToString();
