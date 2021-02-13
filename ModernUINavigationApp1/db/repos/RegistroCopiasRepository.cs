@@ -14,7 +14,7 @@ namespace MCP.db
     {
         public RegistroCopiasRepository()
         {
-            
+
         }
         public List<registro_copias> List
         {
@@ -25,8 +25,8 @@ namespace MCP.db
         }
         public registro_copias Add(registro_copias entity)
         {
-           registro_copias g = DBManager.Context.registro_copias.Add(entity);
-           DBManager.Context.SaveChangesAsync();
+            registro_copias g = DBManager.Context.registro_copias.Add(entity);
+            DBManager.Context.SaveChangesAsync();
 
             return g;
         }
@@ -35,11 +35,12 @@ namespace MCP.db
         {
             try
             {
+                string cliente = rc.copia.cliente.nombre_cliente + " " + rc.copia.cliente.apellidos_cliente;
                 MySqlCommand sql = new MySqlCommand();
                 sql.Connection = conn;
 
                 sql.CommandText = "insert into registro_copias(copia_id, fecha, archivo_url, destino_url, peso, " +
-                    "titulo, nombre_categoria, media_file_id) values(" +
+                    "titulo, nombre_categoria, media_file_id, nombre_cliente) values(" +
                                 rc.copia_id + ", '" +
                                 rc.fecha.ToString("yyyy-MM-dd HH:mm:ss") + "', '" +
                                 rc.archivo_url.Replace("\\", "\\\\") + "', '" +
@@ -47,10 +48,11 @@ namespace MCP.db
                                 rc.peso + ", '" +
                                 rc.titulo + "', '" +
                                 rc.nombre_categoria + "', " +
-                                rc.media_file_id + ")";
+                                rc.media_file_id + "', " +
+                                cliente + ")";
                 sql.ExecuteNonQuery();
             }
-            catch(MySql.Data.MySqlClient.MySqlException e)
+            catch (MySql.Data.MySqlClient.MySqlException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -65,8 +67,8 @@ namespace MCP.db
         public registro_copias FindById(int id)
         {
             registro_copias result = (from r in DBManager.Context.registro_copias
-                             where r.id == id
-                          select r).FirstOrDefault();
+                                      where r.id == id
+                                      select r).FirstOrDefault();
             return result;
         }
 
@@ -76,7 +78,8 @@ namespace MCP.db
                     select r.nombre_categoria).Distinct().ToList();
         }
 
-        public List<registro_copias> Find(DateTime fdesde, DateTime fhasta, int puntoCopiaId = -1, string categoria = "", int userId = -1)
+        public List<registro_copias> Find(DateTime fdesde, DateTime fhasta, int puntoCopiaId = -1, string categoria = "", int userId = -1,
+            string cliente = "")
         {
             var query = (from r in DBManager.Context.registro_copias
                          select r);
@@ -95,11 +98,15 @@ namespace MCP.db
 
             if (userId > 0)
                 query = query.Where(r => r.copia.user_id == userId);
+
+            if (cliente != null && !string.IsNullOrEmpty(cliente))
+                query = query.Where(r => r.nombre_cliente == cliente);
 
             return query.OrderByDescending(r => r.fecha).ToList();
         }
 
-        public Task<List<registro_copias>> FindAsync(DateTime fdesde, DateTime fhasta, int puntoCopiaId = -1, string categoria = "", int userId = -1)
+        public Task<List<registro_copias>> FindAsync(DateTime fdesde, DateTime fhasta, int puntoCopiaId = -1, string categoria = "", int userId = -1,
+            string cliente = "")
         {
             var query = (from r in DBManager.Context.registro_copias
                          select r);
@@ -118,6 +125,11 @@ namespace MCP.db
 
             if (userId > 0)
                 query = query.Where(r => r.copia.user_id == userId);
+
+            if (cliente != null && !string.IsNullOrEmpty(cliente))
+                query = query.Where(r => r.nombre_cliente == cliente);
+
+            Console.WriteLine(query.ToString());
 
             return query.OrderByDescending(r => r.fecha).ToListAsync();
         }

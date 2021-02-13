@@ -31,6 +31,8 @@ namespace MCP
         private static Dictionary<int, WrapPanel> dict_container = new Dictionary<int, WrapPanel>(); //< id de categoria, componente dentro del TAB>
         private static MainWindow mw;
         private static DispatcherTimer changes_timer;
+    
+        public static DispatcherTimer usbTimer;
 
         public static TextBlock tbStatus;
         public static ModernProgressRing statusLoader;
@@ -370,7 +372,7 @@ namespace MCP
 
                             SetAppStatus("Aplicación iniciada.", false);
 
-                            USBManager.StartUsbDeviceWatcher();
+                            USBManager.StartUsbDeviceWatcher(userLogged);
                         }
                         else
                             LError.Text = "Usuario o contraseña incorrectos";
