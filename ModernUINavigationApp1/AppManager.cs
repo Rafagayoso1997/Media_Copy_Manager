@@ -373,6 +373,8 @@ namespace MCP
                             SetAppStatus("Aplicación iniciada.", false);
 
                             USBManager.StartUsbDeviceWatcher(userLogged);
+                            cliente cliente = DBManager.ClienteRepo.FindByName("Rafael Gayoso");
+                            Console.WriteLine(cliente.id_cliente);
                         }
                         else
                             LError.Text = "Usuario o contraseña incorrectos";

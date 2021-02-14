@@ -35,7 +35,11 @@ namespace MCP.db
         {
             try
             {
-                string cliente = rc.copia.cliente.nombre_cliente + " " + rc.copia.cliente.apellidos_cliente;
+                registro_copias r = rc;
+                Console.WriteLine(rc.nombre_cliente);
+                int id = rc.copia.id_cliente;
+                cliente cliente = DBManager.ClienteRepo.FindById(rc.copia.id_cliente);
+                string nombre = cliente.nombre_cliente + " " + cliente.apellidos_cliente;
                 MySqlCommand sql = new MySqlCommand();
                 sql.Connection = conn;
 
@@ -49,7 +53,7 @@ namespace MCP.db
                                 rc.titulo + "', '" +
                                 rc.nombre_categoria + "', " +
                                 rc.media_file_id + "', " +
-                                cliente + ")";
+                               (cliente.nombre_cliente + " " + cliente.apellidos_cliente) + ")";
                 sql.ExecuteNonQuery();
             }
             catch (MySql.Data.MySqlClient.MySqlException e)

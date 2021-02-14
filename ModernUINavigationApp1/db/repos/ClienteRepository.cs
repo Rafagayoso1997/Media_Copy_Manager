@@ -52,10 +52,13 @@ namespace MCP.db.repos
             DBManager.Context.SaveChanges();
         }
 
-        public cliente FindByPhone(string phone)
+        public cliente FindByName(string completeName)
         {
+            string[] splitName = completeName.Split(' ');
+            string nombre = splitName[0];
+            string apellido = splitName[1];
             cliente cliente = (from c in DBManager.Context.clientes
-                               where c.telefono == phone
+                               where c.nombre_cliente == nombre && c.apellidos_cliente == apellido 
                                select c).FirstOrDefault();
             return cliente;
 

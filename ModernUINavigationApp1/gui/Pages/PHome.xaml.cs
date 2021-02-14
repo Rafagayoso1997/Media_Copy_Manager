@@ -650,6 +650,12 @@ namespace MCP.gui.Pages
                 return;
             }
 
+            if(cbxCliente.SelectedIndex == 0)
+            {
+                MessageBox.Show("Debe seleccionar el cliente al que pertenece la copia");
+                return;
+            }
+
             string destination = AppMAnager.showFolderBrowser("");
             if (Directory.Exists(destination))
             {
@@ -688,6 +694,8 @@ namespace MCP.gui.Pages
                     if (!string.IsNullOrEmpty(realValue))
                         montoReal = double.Parse(realValue);
 
+                    cliente cliente = DBManager.ClienteRepo.FindByName((string)cbxCliente.SelectedItem);
+                    Console.WriteLine(cliente.nombre_cliente);
                     copia c = new copia
                     {
                         user_id = AppMAnager.CurrentUser().id,
@@ -696,8 +704,10 @@ namespace MCP.gui.Pages
                         tipo_pago_id = tpagoId,
                         fecha = DateTime.Now,
                         monto_sistema = costoLista,
-                        monto_real = montoReal
+                        monto_real = montoReal,
+                        id_cliente = cliente.id_cliente
                     };
+                    c.cliente = cliente;
                     copia the_copy = DBManager.CopiasRepo.Add(c);
 
                     if (the_copy != null)
