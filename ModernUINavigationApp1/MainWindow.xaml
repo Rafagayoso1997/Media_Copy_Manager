@@ -20,9 +20,9 @@
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="Categorías" Source="/gui/Pages/nomencladores/PCategorias.xaml" />
                 <mui:Link DisplayName="Escanear disco" Source="/gui/Pages/PScanner.xaml" />
-                <mui:Link DisplayName="Géneros" Source="/gui/Pages/nomencladores/PGeneros.xaml" />
+                <!-- <mui:Link DisplayName="Géneros" Source="/gui/Pages/nomencladores/PGeneros.xaml" />
                 <mui:Link DisplayName="Países" Source="/gui/Pages/nomencladores/PPaises.xaml" />
-                <!-- <mui:Link DisplayName="Apariencia" Source="/gui/Pages/Settings/Appearance.xaml" /> -->
+                <mui:Link DisplayName="Apariencia" Source="/gui/Pages/Settings/Appearance.xaml" /> -->
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="Administración">

@@ -40,10 +40,16 @@
             </Grid>
 
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right">
+                <Button Name="BtnScanCategory" Click="ScanCategory" Width="200">
+                    <StackPanel Orientation="Horizontal" Width="150">
+                        <Image Source="/MCP;component/Resources/search.png"></Image>
+                        <TextBlock Text="Escanear Categoría" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </Button>
                 <Button Name="BtnScan" Click="BtnScan_Click" Width="200">
                     <StackPanel Orientation="Horizontal" Width="150">
                         <Image Source="/MCP;component/Resources/search.png"></Image>
-                        <TextBlock Text="Escanear" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="Escanear todo" VerticalAlignment="Center"></TextBlock>
                     </StackPanel>
                 </Button>
             
