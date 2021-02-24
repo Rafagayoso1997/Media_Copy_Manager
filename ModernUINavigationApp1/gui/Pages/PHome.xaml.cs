@@ -106,7 +106,7 @@ namespace MCP.gui.Pages
 
             //combo clientes
             List<cliente> clientes = DBManager.ClienteRepo.List;
-            cbxCliente.Items.Add("- TODOS -");
+            cbxCliente.Items.Add("- CLIENTES -");
             foreach (cliente cliente in clientes)
             {
                 string clienteNombreCompleto = cliente.nombre_cliente + " " + cliente.apellidos_cliente;
@@ -440,19 +440,34 @@ namespace MCP.gui.Pages
 
         private void ListContentSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+           
             selectionChanged();
         }
 
+        private void click_derecho(object sender, MouseButtonEventArgs e)
+        {
+
+            int selectedMediaId = ((ListViewMediaItem)_listViewContent.SelectedItem).MediaId();
+            media_files mf = DBManager.MediaFilesRepo.FindById(selectedMediaId);
+            MessageBox.Show(selectedMediaId.ToString());
+            
+        }
+
+    
+        
         public async void selectionChanged()
         {
             if (_listViewContent.SelectedItems.Count > 0)
             {
+                ((ListViewMediaItem)_listViewContent.SelectedItem).MouseRightButtonUp += new MouseButtonEventHandler(click_derecho);
                 //btnAdd.IsEnabled = true;
                 if (_listViewContent.SelectedItems.Count == 1) //Mostrar info del Item seleccionado
                 {
+                   
                     int selectedMediaId = ((ListViewMediaItem)_listViewContent.SelectedItem).MediaId();
                     media_files mf = await DBManager.MediaFilesRepo.FindByIdAsync(selectedMediaId);
                     showInfoPanel(mf);
+                    
                 }
                 else
                 {
@@ -994,5 +1009,7 @@ namespace MCP.gui.Pages
         {
             treeContentChanged = true;
         }
+
+        
     }
 }

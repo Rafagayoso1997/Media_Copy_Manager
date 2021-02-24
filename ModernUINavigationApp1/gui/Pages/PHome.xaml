@@ -130,7 +130,14 @@
 
                 <Separator Grid.Column="0" Grid.Row="1" Foreground="LightSlateGray"></Separator>
                 <ScrollViewer Grid.Column="0" Grid.Row="2" Margin="0">
-                    <ListView Name="_listViewContent" />
+                    <ListView Name="_listViewContent">
+                       <!--- <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <EventSetter Event="PreviewMouseRightButtonDown" Handler="click_derecho"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>-->
+                    </ListView>
+
                 </ScrollViewer>
             </Grid>
 
