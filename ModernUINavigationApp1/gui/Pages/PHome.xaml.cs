@@ -449,8 +449,8 @@ namespace MCP.gui.Pages
 
             int selectedMediaId = ((ListViewMediaItem)_listViewContent.SelectedItem).MediaId();
             media_files mf = DBManager.MediaFilesRepo.FindById(selectedMediaId);
-            MessageBox.Show(selectedMediaId.ToString());
-            
+            MessageBox.Show(mf.file_url);
+           
         }
 
     
@@ -459,7 +459,7 @@ namespace MCP.gui.Pages
         {
             if (_listViewContent.SelectedItems.Count > 0)
             {
-                ((ListViewMediaItem)_listViewContent.SelectedItem).MouseRightButtonUp += new MouseButtonEventHandler(click_derecho);
+                //((ListViewMediaItem)_listViewContent.SelectedItem).MouseRightButtonUp += new MouseButtonEventHandler(click_derecho);
                 //btnAdd.IsEnabled = true;
                 if (_listViewContent.SelectedItems.Count == 1) //Mostrar info del Item seleccionado
                 {
@@ -475,6 +475,7 @@ namespace MCP.gui.Pages
                 }
 
                 btnAdd.IsEnabled = checkSelectedFilesExistence();
+               
             }
             else  //Si no hay contenido seleccionado veo si hay seleccion en el explorador
             {
@@ -489,6 +490,7 @@ namespace MCP.gui.Pages
                     btnAdd.IsEnabled = false;
                 }
             }
+             
         }
 
         //Verificar lo seleccionado. TRUE si todos existen. Si existe algun item que no existe devuelve FALSE
@@ -1009,6 +1011,8 @@ namespace MCP.gui.Pages
         {
             treeContentChanged = true;
         }
+
+       
 
         
     }

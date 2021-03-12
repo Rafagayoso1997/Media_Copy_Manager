@@ -136,6 +136,7 @@
                                 <EventSetter Event="PreviewMouseRightButtonDown" Handler="click_derecho"/>
                             </Style>
                         </ListView.ItemContainerStyle>-->
+                        
                     </ListView>
 
                 </ScrollViewer>
