@@ -27,7 +27,7 @@ namespace MCP.gui.Pages.nomencladores
             lNombre.Tag = "Nombre";
             hideForm();
             State = AppMAnager.STATE_NULL;
-            entity = null;
+            entity = new categoria();
 
             RefreshComboTiposCateg();
         }

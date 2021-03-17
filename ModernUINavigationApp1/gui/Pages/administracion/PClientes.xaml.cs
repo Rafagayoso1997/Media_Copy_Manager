@@ -68,7 +68,7 @@ namespace MCP.gui.Pages.administracion
             hideForm();
             this.usb = usb;
             State = AppMAnager.STATE_NULL;
-            cliente = new cliente();
+            cliente = null;
 
 
 

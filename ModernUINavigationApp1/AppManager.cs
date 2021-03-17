@@ -43,6 +43,7 @@ namespace MCP
 
         public static readonly string COLOR_ERROR_BACKGROUND = "#FFFFDADA";
         public static readonly string COLOR_ERROR_FOREGROUND = "#FFCF2929";
+        public static readonly string COLOR_NEW_FOREGROUND = "#33CA7F";
         public static readonly string COLOR_SELECTION = "#FF0885CD";
 
         public static LoginDialog _loginDialog;
