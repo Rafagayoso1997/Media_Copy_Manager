@@ -19,7 +19,21 @@ namespace MCP.db
         public float capacidad { get; set; }
         public string marca { get; set; }
         public int id_cliente { get; set; }
-    
+        public string nombre_cliente { get { return this.getClientName(); } }
+        public string capacidad_string { get { return getCapacidad(); } }
+        
         public virtual cliente cliente { get; set; }
+
+
+        private string getClientName()
+        {
+            return this.cliente.nombre_cliente;
+        }
+
+        private string getCapacidad()
+        {
+            float capacidad =(float) Math.Ceiling((double)(this.capacidad));
+            return capacidad.ToString() + " GB";
+        }
     }
 }

@@ -225,6 +225,9 @@
     <Compile Include="gui\CopyListViewDialog.xaml.cs">
       <DependentUpon>CopyListViewDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="gui\Pages\administracion\PAlmacenamiento.xaml.cs">
+      <DependentUpon>PAlmacenamiento.xaml</DependentUpon>
+    </Compile>
     <Compile Include="gui\Pages\administracion\PClientes.xaml.cs">
       <DependentUpon>PClientes.xaml</DependentUpon>
     </Compile>
@@ -293,6 +296,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="gui\LoginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="gui\Pages\administracion\PAlmacenamiento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -232,3 +232,5 @@ C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\
 C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\obj\Release\MCP.csprojAssemblyReference.cache
 C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\bin\Release\MySql.Data.dll
 C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\bin\Release\MySql.Data.Entity.EF6.dll
+C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\obj\Release\gui\Pages\administracion\PAlmacenamiento.baml
+C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\obj\Release\gui\Pages\administracion\PAlmacenamiento.g.cs

@@ -34,6 +34,7 @@
                 <mui:Link DisplayName="Trabajadores" Source="/gui/Pages/administracion/PTrabajadores.xaml" />
                 <mui:Link DisplayName="Clientes" Source="/gui/Pages/administracion/PClientes.xaml" />
                 <mui:Link DisplayName="Usuarios" Source="/gui/Pages/administracion/PUsuarios.xaml" />
+                <mui:Link DisplayName="Dispositivos de Almacenamiento" Source="/gui/Pages/administracion/PAlmacenamiento.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
     </mui:ModernWindow.MenuLinkGroups>

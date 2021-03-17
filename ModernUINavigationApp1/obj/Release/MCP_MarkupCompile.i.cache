@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\App.xaml
-28-757059552
-21144330430
-106-56258546
-80824755840
-gui\components\CustomCombo.xaml;gui\components\MediaFilePlayer.xaml;gui\components\ProgressInfo.xaml;gui\ConnectionConfigDialog.xaml;gui\ListDialog.xaml;gui\ListSelectorDialog.xaml;gui\CopyListViewDialog.xaml;gui\LoginDialog.xaml;gui\Pages\administracion\PClientes.xaml;gui\Pages\administracion\PCoeficientes.xaml;gui\Pages\administracion\PTrabajadores.xaml;gui\Pages\administracion\PPuntosCopia.xaml;gui\Pages\administracion\PUsuarios.xaml;gui\Pages\CopyListViewDialogPage.xaml;gui\Pages\LoginPage.xaml;gui\Pages\nomencladores\PGeneros.xaml;gui\Pages\nomencladores\PPaises.xaml;gui\Pages\nomencladores\PCategorias.xaml;gui\Pages\PRegistroCopias.xaml;gui\Pages\PEditarCatalogo.xaml;gui\Pages\PLoader.xaml;gui\Pages\PScanner.xaml;MainWindow.xaml;gui\Pages\Settings\About.xaml;gui\Pages\Settings\Appearance.xaml;gui\Pages\PHome.xaml;gui\Pages\SettingsPage.xaml;Themes\MCPModernWindow.xaml;
+291878321774
+5-114230602
+107-1674207987
+81-1645067610
+gui\components\CustomCombo.xaml;gui\components\MediaFilePlayer.xaml;gui\components\ProgressInfo.xaml;gui\ConnectionConfigDialog.xaml;gui\ListDialog.xaml;gui\ListSelectorDialog.xaml;gui\CopyListViewDialog.xaml;gui\LoginDialog.xaml;gui\Pages\administracion\PAlmacenamiento.xaml;gui\Pages\administracion\PClientes.xaml;gui\Pages\administracion\PCoeficientes.xaml;gui\Pages\administracion\PTrabajadores.xaml;gui\Pages\administracion\PPuntosCopia.xaml;gui\Pages\administracion\PUsuarios.xaml;gui\Pages\CopyListViewDialogPage.xaml;gui\Pages\LoginPage.xaml;gui\Pages\nomencladores\PGeneros.xaml;gui\Pages\nomencladores\PPaises.xaml;gui\Pages\nomencladores\PCategorias.xaml;gui\Pages\PRegistroCopias.xaml;gui\Pages\PEditarCatalogo.xaml;gui\Pages\PLoader.xaml;gui\Pages\PScanner.xaml;MainWindow.xaml;gui\Pages\Settings\About.xaml;gui\Pages\Settings\Appearance.xaml;gui\Pages\PHome.xaml;gui\Pages\SettingsPage.xaml;Themes\MCPModernWindow.xaml;
 
 False
 
