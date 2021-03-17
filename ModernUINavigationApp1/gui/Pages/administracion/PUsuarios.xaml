@@ -20,12 +20,8 @@
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid Margin="0,0,0,0" Grid.Column="0" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="false" IsReadOnly="true" Name="_dataGrid" GridLinesVisibility="Horizontal">
-                <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="HorizontalContentAlignment" Value="Left" />
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>
+            <DataGrid Margin="0,0,0,0" Grid.Column="0" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="false" IsReadOnly="true" Name="_dataGrid" GridLinesVisibility="All" VerticalGridLinesBrush="#FFE6DEDE">
+               
                 
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="200" Header="Nombre" Binding="{Binding nombre }" />
