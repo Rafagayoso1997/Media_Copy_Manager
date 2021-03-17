@@ -198,7 +198,7 @@ namespace MCP.gui.Pages
             List<usb> registros = DBManager.UsbRepo.List.ToList();
             foreach (usb usb in registros)
             {
-                Console.WriteLine(usb.id_usb);
+                Console.WriteLine(usb.nombre_dispositivo);
             }
             _dataGrid.ItemsSource = registros;
         }

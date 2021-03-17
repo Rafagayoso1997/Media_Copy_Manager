@@ -19,8 +19,6 @@
     <Property Name="nombre_cliente" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="apellidos_cliente" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="telefono" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="copias" Relationship="Self.copias_ibfk_4" FromRole="cliente" ToRole="copias" />
-    <NavigationProperty Name="usbs" Relationship="Self.usb_ibfk_1" FromRole="cliente" ToRole="usb" />
   </EntityType>
   <EntityType Name="coeficientes_pago">
     <Key>
@@ -57,7 +55,6 @@
     <Property Name="monto_sistema" Type="Double" Nullable="false" />
     <Property Name="monto_real" Type="Double" Nullable="false" />
     <Property Name="id_cliente" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="cliente" Relationship="Self.copias_ibfk_4" FromRole="copias" ToRole="cliente" />
     <NavigationProperty Name="copia_puntos" Relationship="Self.copias_ibfk_1" FromRole="copias" ToRole="copia_puntos" />
     <NavigationProperty Name="usuario" Relationship="Self.copias_ibfk_2" FromRole="copias" ToRole="usuarios" />
     <NavigationProperty Name="tipos_pago" Relationship="Self.copias_ibfk_3" FromRole="copias" ToRole="tipos_pago" />
@@ -148,8 +145,8 @@
     <Property Name="titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="nombre_categoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="media_file_id" Type="Int32" Nullable="false" />
+    <Property Name="nombre_cliente" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="copia" Relationship="Self.registro_copias_ibfk_1" FromRole="registro_copias" ToRole="copias" />
-    <Property Name="nombre_cliente" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tipo_categorias">
     <Key>
@@ -189,9 +186,9 @@
     <Property Name="id_usb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="numero_serie" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="capacidad" Type="Single" Nullable="false" />
-    <Property Name="marca" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre_dispositivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="id_cliente" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="cliente" Relationship="Self.usb_ibfk_1" FromRole="usb" ToRole="cliente" />
+    <Property Name="tipo_dispositivo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="usuario">
     <Key>
@@ -232,34 +229,6 @@
       </Principal>
       <Dependent Role="media_files">
         <PropertyRef Name="categoria_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="copias_ibfk_4">
-    <End Role="cliente" Type="Self.cliente" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="copias" Type="Self.copia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="cliente">
-        <PropertyRef Name="id_cliente" />
-      </Principal>
-      <Dependent Role="copias">
-        <PropertyRef Name="id_cliente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usb_ibfk_1">
-    <End Role="cliente" Type="Self.cliente" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="usb" Type="Self.usb" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="cliente">
-        <PropertyRef Name="id_cliente" />
-      </Principal>
-      <Dependent Role="usb">
-        <PropertyRef Name="id_cliente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -460,14 +429,6 @@
     <AssociationSet Name="media_files_ibfk_1" Association="Self.media_files_ibfk_1">
       <End Role="categorias" EntitySet="categorias" />
       <End Role="media_files" EntitySet="media_files" />
-    </AssociationSet>
-    <AssociationSet Name="copias_ibfk_4" Association="Self.copias_ibfk_4">
-      <End Role="cliente" EntitySet="clientes" />
-      <End Role="copias" EntitySet="copias" />
-    </AssociationSet>
-    <AssociationSet Name="usb_ibfk_1" Association="Self.usb_ibfk_1">
-      <End Role="cliente" EntitySet="clientes" />
-      <End Role="usb" EntitySet="usbs" />
     </AssociationSet>
     <AssociationSet Name="coeficientes_pago_ibfk_1" Association="Self.coeficientes_pago_ibfk_1">
       <End Role="tipo_categorias" EntitySet="tipo_categorias" />

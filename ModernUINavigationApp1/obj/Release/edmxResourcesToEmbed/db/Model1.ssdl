@@ -159,8 +159,9 @@
     <Property Name="id_usb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="numero_serie" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="capacidad" Type="float" Nullable="false" />
-    <Property Name="marca" Type="varchar" MaxLength="250" />
+    <Property Name="nombre_dispositivo" Type="varchar" MaxLength="250" />
     <Property Name="id_cliente" Type="int" Nullable="false" />
+    <Property Name="tipo_dispositivo" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="usuarios">
     <Key>
