@@ -26,11 +26,14 @@ namespace MCP.gui.components
 
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Horizontal;
+            BrushConverter bc = new BrushConverter();
 
             if (!fileExists)
             {
                 chb.Click += new RoutedEventHandler(ClickNodo);
                 sp.Children.Add(chb);
+               
+                tb.Foreground = (Brush)bc.ConvertFrom(AppMAnager.COLOR_NEW_FOREGROUND);
             }
             else
             {
@@ -38,7 +41,7 @@ namespace MCP.gui.components
                 if (isFolder)
                     sp.Children.Add(chb);
 
-                BrushConverter bc = new BrushConverter();
+               
                 tb.Foreground = (Brush)bc.ConvertFrom(AppMAnager.COLOR_ERROR_FOREGROUND);
             }
 

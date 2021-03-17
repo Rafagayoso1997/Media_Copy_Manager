@@ -131,7 +131,7 @@ namespace MCP.gui.Pages
 
         private void ScanCategory(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Selected Tab " + (_tab.SelectedItem as TabItem).Header);
+            
             AppMAnager.SetWaitCursor();
             _cProgress.Height = new GridLength(20);
             // _pBar.Value = 0;

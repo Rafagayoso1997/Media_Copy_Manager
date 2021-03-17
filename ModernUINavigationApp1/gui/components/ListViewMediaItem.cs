@@ -69,6 +69,7 @@ namespace MCP.gui.components
            // this.StandBy = false;
         }
 
+        //Añadir click derecho
         private void AddContextMenu()
         {
             if (!this.mf.is_folder)

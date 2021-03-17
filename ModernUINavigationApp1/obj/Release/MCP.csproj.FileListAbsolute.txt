@@ -230,3 +230,5 @@ C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\
 C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\obj\Release\MCP.exe
 C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\obj\Release\MCP.pdb
 C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\obj\Release\MCP.csprojAssemblyReference.cache
+C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\bin\Release\MySql.Data.dll
+C:\Users\gayos\Documents\GitHub\Media_Copy_Mngr_Software\ModernUINavigationApp1\bin\Release\MySql.Data.Entity.EF6.dll
