@@ -152,11 +152,13 @@
     <Compile Include="db\registro_copias.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="db\repos\ClienteRepository.cs" />
     <Compile Include="db\repos\CopiasRepository.cs" />
     <Compile Include="db\repos\PreferencesRepository.cs" />
     <Compile Include="db\repos\TipoPagosRepository.cs" />
     <Compile Include="db\repos\TrabajadoresRepository.cs" />
     <Compile Include="db\repos\CoeficientePagosRepository.cs" />
+    <Compile Include="db\repos\UsbRepository.cs" />
     <Compile Include="db\repos\UsuariosRepository.cs" />
     <Compile Include="db\repos\RegistroCopiasRepository.cs" />
     <Compile Include="db\repos\MediaGenerosRepository.cs" />
@@ -223,6 +225,9 @@
     <Compile Include="gui\CopyListViewDialog.xaml.cs">
       <DependentUpon>CopyListViewDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="gui\Pages\administracion\PClientes.xaml.cs">
+      <DependentUpon>PClientes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="gui\Pages\administracion\PCoeficientes.xaml.cs">
       <DependentUpon>PCoeficientes.xaml</DependentUpon>
     </Compile>
@@ -288,6 +293,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="gui\LoginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="gui\Pages\administracion\PClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

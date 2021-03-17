@@ -1,10 +1,13 @@
-﻿using System;
+﻿using MCP.db;
+using MCP.gui.Pages.administracion;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace MCP.USB
@@ -44,15 +47,24 @@ namespace MCP.USB
               }
           }*/
 
-        public static void StartUsbDeviceWatcher()
+        public static void StartUsbDeviceWatcher(bool session)
         {
             usb_serial = new USBSerialNumber();
+            if (AppMAnager.usbTimer == null || session)
+            {
+                AppMAnager.usbTimer = new DispatcherTimer();
+                AppMAnager.usbTimer.Tick += new EventHandler(watchForInsertedDevice);
+                AppMAnager.usbTimer.Interval = new TimeSpan(0, 0, 3);
+                AppMAnager.usbTimer.Start();
+            }
+            else
+            {
+                AppMAnager.usbTimer.Stop();
+            }
 
-            DispatcherTimer dt = new DispatcherTimer();
-            dt.Tick += new EventHandler(watchForInsertedDevice);
-            dt.Interval = new TimeSpan(0, 0, 3);
-            dt.Start();
         }
+
+
 
         private static void watchForInsertedDevice(object sender, EventArgs e)
         {
@@ -62,12 +74,16 @@ namespace MCP.USB
 
                 string letter;
                 string serial;
+                float capacity = 0;
                 List<string> usb_list = new List<string>();
                 foreach (DriveInfo di in DriveInfo.GetDrives())
                 {
                     if (di.DriveType == DriveType.Fixed || di.DriveType == DriveType.Removable)
                     {
+
                         letter = di.RootDirectory.ToString().Substring(0, 2);
+                        capacity = (float)(di.TotalSize * Math.Pow(10, -9));
+
                         serial = usb_serial.getSerialNumberFromDriveLetter(letter);
 
                         if (!string.IsNullOrEmpty(serial))
@@ -82,7 +98,8 @@ namespace MCP.USB
                     if (!connected_devices.Contains(sn))
                     {
                         connected_devices.Add(sn);
-                        FireNewDeviceConnected(sn);
+                        CheckIfExistUsb(capacity, sn);
+                        //FireNewDeviceConnected(sn);
                     }
                 }
 
@@ -111,9 +128,52 @@ namespace MCP.USB
             }
         }
 
-        private static void FireNewDeviceConnected(string serial)
+        private static void CheckIfExistUsb(float capacity, string sn)
         {
+            bool exist = FireNewDeviceConnected(sn);
+            if (!exist)
+            {
+
+
+                usb usb = new usb
+                {
+                    numero_serie = sn,
+                    capacidad = capacity,
+                    //id_cliente = 0,
+                    marca = ""
+                    //cliente = DBManager.ClienteRepo.FindById(1)
+                };
+                Window window = new Window
+                {
+                    Title = "Test",
+                    Content = new PClientes(usb)
+
+                };
+
+                window.WindowState = WindowState.Maximized;
+
+                window.ShowDialog();
+
+                //DBManager.UsbRepo.Add(usb);
+            }
+        }
+
+        private static Boolean FireNewDeviceConnected(string serial)
+        {
+            bool exist = true;
             Debug.WriteLine("Connected device: " + serial);
+            usb usb = DBManager.UsbRepo.FindBySerial(serial);
+            if (usb == null)
+            {
+                MessageBox.Show("El dispositvo no pertenece a ningún cliente. Debe añadir el cliente al sistema");
+                exist = false;
+            }
+            else
+            {
+                cliente cliente = DBManager.ClienteRepo.FindById(usb.id_cliente);
+                MessageBox.Show("Dispositvo perteneciente a " + cliente.nombre_cliente + " " + cliente.apellidos_cliente);
+            }
+            return exist;
         }
 
         /* private static string GetDeviceSerial(string driveletter)

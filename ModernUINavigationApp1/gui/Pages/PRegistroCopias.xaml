@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="200">
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="350">
 
     <Grid Style="{StaticResource ContentRoot}" Margin="0" >
         <Grid.RowDefinitions>
@@ -28,10 +28,15 @@
             <StackPanel Orientation="Vertical" Margin="20 0 0 0">
                 <TextBlock Text="Categoría" HorizontalAlignment="Left"/>
                 <ComboBox Name="cbxCategoria" Width="130" SelectionChanged="FilterChanged" />
+
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="20 0 0 0" Name="_spPuntoCopia">
                 <TextBlock Text="Punto de copia" HorizontalAlignment="Left"/>
                 <ComboBox Name="cbxPuntoCopia" Width="130" SelectionChanged="FilterChanged" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="20 0 0 0" Name="_spCliente">
+                <TextBlock Text="Cliente" HorizontalAlignment="Left"/>
+                <ComboBox Name="cbxCliente" Width="130" SelectionChanged="FilterChanged" />
             </StackPanel>
         </StackPanel>
 
@@ -59,6 +64,7 @@
                     <DataGridTextColumn Width="90" Header="Copia #" Binding="{Binding NoCopia}"></DataGridTextColumn>
                     <DataGridTextColumn Width="90" Header="Punto" Binding="{Binding puntoCopia}"></DataGridTextColumn>
                     <DataGridTextColumn Width="90" Header="Usuario" Binding="{Binding username }"></DataGridTextColumn>
+                    <DataGridTextColumn Width="110" Header="Cliente" Binding="{Binding nombre_cliente }"></DataGridTextColumn>
                     <DataGridTextColumn Width="110" Header="Fecha" Binding="{Binding fecha}"></DataGridTextColumn>
                     <DataGridTextColumn Width="150" Header="Archivo" Binding="{Binding titulo }"></DataGridTextColumn>
                     <DataGridTextColumn Width="100" Header="Categoría" Binding="{Binding nombre_categoria }"></DataGridTextColumn>

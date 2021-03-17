@@ -129,8 +129,70 @@ namespace MCP.gui.Pages
             _LoaderGif.Visibility = Visibility.Hidden;
         }
 
+        private void ScanCategory(object sender, RoutedEventArgs e)
+        {
+            
+            AppMAnager.SetWaitCursor();
+            _cProgress.Height = new GridLength(20);
+            // _pBar.Value = 0;
+            _pBar.Minimum = 0;
+            _pBar.Maximum = 100;
+
+            //_tab.ClipToBounds = true;
+            BtnScan.IsEnabled = false;
+
+            existingFilesInDB = new List<string>();
+
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.DoWork += DoWorkSimple;
+            worker.RunWorkerCompleted += workerEnded;
+            worker.WorkerReportsProgress = true;
+            worker.ProgressChanged += workerProgressChanged;
+            worker.RunWorkerAsync();
+        }
+
+        //Escanear Categorias
+        private void DoWorkSimple(object sender, DoWorkEventArgs e)
+        {
+            List<categoria> ListaCategorias = DBManager.CategoriasRepo.List;
+            if (ListaCategorias.Count > 0)
+            {
+                int Total = ListaCategorias.Count;
+                int i = 0;
+                int progress = 0;
+
+               
+                TreeView tree;
+                //foreach (categoria categ in ListaCategorias)
+               // {
+                    _tab.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+                    (Action)(() => {
+                        TabItem page = _tab.SelectedItem as TabItem;
+                        categoria categ = DBManager.CategoriasRepo.FindByName(page.Header.ToString(), -1);
+                        tree = (TreeView)page.Content;
+
+                        tree.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+                        (Action)(() => {
+                            tree.Items.Clear();
+
+                            if (Directory.Exists(categ.carpeta))
+                                LoadDirectory(categ, tree);
+                        }));
+                    }));
+
+
+                    //i++;
+                    progress = (i * 100) / Total;
+                    (sender as BackgroundWorker).ReportProgress(progress);
+                    Thread.Sleep(100);
+               // }
+            }
+            else
+                ((Grid)_tab.Parent).Visibility = Visibility.Hidden;
+        }
+
         /**
-         * Click del Boton Escanear
+         * Click del Boton Escanear todas las categorias
          */
         private void BtnScan_Click(object sender, RoutedEventArgs e)
         {
@@ -519,5 +581,7 @@ namespace MCP.gui.Pages
         {
             contentChanged = true;
         }
+
+      
     }
 }

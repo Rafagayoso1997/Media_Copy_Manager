@@ -408,6 +408,7 @@ namespace Backup2
         private void registerFileCopy(string archivo_url, string destino_url, MediaFile_Basic_Info mf)
         {
             registro_copias RC = new registro_copias();
+            copia copia = DBManager.CopiasRepo.FindById(this.dbCopyId);
             if (destino_url.IndexOf("\\\\") >= 0)
                 destino_url = destino_url.Replace("\\\\", "\\");
 
@@ -419,6 +420,10 @@ namespace Backup2
             RC.nombre_categoria = mf.nombre_categoria;
             RC.titulo = mf.titulo;
             RC.peso = new FileInfo(archivo_url).Length;
+            RC.copia = copia;
+            RC.nombre_cliente = copia.cliente.nombre_cliente + " " + copia.cliente.apellidos_cliente;
+           
+
 
             RC_LIST.Add(RC);
         }

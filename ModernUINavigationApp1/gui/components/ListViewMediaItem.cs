@@ -16,6 +16,7 @@ namespace MCP.gui.components
 {
     public class ListViewMediaItem : ContentControl
     {
+        private media_files mf= null;
         private int mediaId;
         private int categoriaId;
         private bool is_folder;
@@ -25,6 +26,7 @@ namespace MCP.gui.components
 
         public ListViewMediaItem(media_files mf)
         {
+            this.mf = mf;
             this.mediaId = mf.id;
             this.categoriaId = mf.categoria_id;
             this.is_folder = mf.is_folder;
@@ -62,7 +64,85 @@ namespace MCP.gui.components
                 l.Foreground = AppMAnager.DefaultLabelForeColor();
 
             this.MouseDoubleClick += new System.Windows.Input.MouseButtonEventHandler(Item_MouseDoubleClick);
+
+            AddContextMenu();
            // this.StandBy = false;
+        }
+
+        //Añadir click derecho
+        private void AddContextMenu()
+        {
+            if (!this.mf.is_folder)
+            {
+                ContextMenu menu = new ContextMenu();
+                MenuItem men = new MenuItem();
+                men.Header = "Copiar";
+                men.Click += Copy_Media;
+                menu.Items.Add(men);
+
+                men = new MenuItem();
+                men.Header = "Abrir en el explorador";
+                men.Click += Open_Media;
+                menu.Items.Add(men);
+
+                men = new MenuItem();
+                men.Header = "Enviar";
+                men.Click += Send_Media;
+                menu.Items.Add(men);
+
+                men = new MenuItem();
+                men.Header = "Eliminar";
+                men.Click += Delete_Media;
+                menu.Items.Add(men);
+
+                /* menu.Items.Add("Copiar", new RoutedEventHandler(Copy_Media));
+                 menu.Items.Add("Abrir en el explorador", new RoutedEventHandler(Open_Media));
+                 menu.Items.Add("Enviar", new RoutedEventHandler(Send_Media));
+                 menu.Items.Add("Eliminar", new RoutedEventHandler(Delete_Media));*/
+                this.ContextMenu = menu;
+            }
+            
+        }
+
+        private void Copy_Media(object sender, EventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            MessageBox.Show(item.Header.ToString() + " " + mf.titulo.ToString());
+
+        }
+
+        private void Open_Media(object sender, EventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            MessageBox.Show(item.Header.ToString() + " " + mf.titulo.ToString());
+
+        }
+
+        private void Send_Media(object sender, EventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            MessageBox.Show(item.Header.ToString() + " " + mf.titulo.ToString());
+
+        }
+
+        private void Delete_Media(object sender, EventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            MessageBox.Show(item.Header.ToString() + " " + mf.titulo.ToString());
+            if (mf != null)
+            {
+                MessageBoxResult res = MessageBox.Show("¿Confirma que desea eliminar el archivo del catálogo?", "Información", MessageBoxButton.YesNo);
+                if (res == MessageBoxResult.Yes)
+                {
+                    DBManager.MediaFilesRepo.DeleteEntity(mf);
+
+              
+                    mf = null;
+                    AppMAnager.GlobalContentChanged();
+                }
+            }
+           
+
         }
 
         private void Item_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -96,5 +176,7 @@ namespace MCP.gui.components
         {
             return file_exists;
         }
+
+        
     }
 }

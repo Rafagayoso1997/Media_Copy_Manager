@@ -31,6 +31,8 @@ namespace MCP
         private static Dictionary<int, WrapPanel> dict_container = new Dictionary<int, WrapPanel>(); //< id de categoria, componente dentro del TAB>
         private static MainWindow mw;
         private static DispatcherTimer changes_timer;
+    
+        public static DispatcherTimer usbTimer;
 
         public static TextBlock tbStatus;
         public static ModernProgressRing statusLoader;
@@ -41,6 +43,7 @@ namespace MCP
 
         public static readonly string COLOR_ERROR_BACKGROUND = "#FFFFDADA";
         public static readonly string COLOR_ERROR_FOREGROUND = "#FFCF2929";
+        public static readonly string COLOR_NEW_FOREGROUND = "#33CA7F";
         public static readonly string COLOR_SELECTION = "#FF0885CD";
 
         public static LoginDialog _loginDialog;
@@ -370,7 +373,9 @@ namespace MCP
 
                             SetAppStatus("Aplicación iniciada.", false);
 
-                            USBManager.StartUsbDeviceWatcher();
+                            USBManager.StartUsbDeviceWatcher(userLogged);
+                            cliente cliente = DBManager.ClienteRepo.FindByName("Rafael Gayoso");
+                            Console.WriteLine(cliente.id_cliente);
                         }
                         else
                             LError.Text = "Usuario o contraseña incorrectos";
