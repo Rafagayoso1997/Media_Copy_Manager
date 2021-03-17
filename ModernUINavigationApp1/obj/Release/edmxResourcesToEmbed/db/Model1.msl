@@ -126,7 +126,6 @@
     <EntitySetMapping Name="registro_copias">
       <EntityTypeMapping TypeName="media_managerModel.registro_copias">
         <MappingFragment StoreEntitySet="registro_copias">
-          <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="copia_id" ColumnName="copia_id" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
@@ -136,6 +135,7 @@
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="nombre_categoria" ColumnName="nombre_categoria" />
           <ScalarProperty Name="media_file_id" ColumnName="media_file_id" />
+          <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -174,8 +174,9 @@
           <ScalarProperty Name="id_usb" ColumnName="id_usb" />
           <ScalarProperty Name="numero_serie" ColumnName="numero_serie" />
           <ScalarProperty Name="capacidad" ColumnName="capacidad" />
-          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="nombre_dispositivo" ColumnName="nombre_dispositivo" />
           <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="tipo_dispositivo" ColumnName="tipo_dispositivo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

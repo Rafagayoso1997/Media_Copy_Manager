@@ -17,8 +17,9 @@ namespace MCP.db
         public int id_usb { get; set; }
         public string numero_serie { get; set; }
         public float capacidad { get; set; }
-        public string marca { get; set; }
         public int id_cliente { get; set; }
+         public string nombre_dispositivo { get; set; }
+        public string tipo_dispositivo { get; set; }
         public string nombre_cliente { get { return this.getClientName(); } }
         public string capacidad_string { get { return getCapacidad(); } }
         
@@ -27,7 +28,8 @@ namespace MCP.db
 
         private string getClientName()
         {
-            return this.cliente.nombre_cliente;
+            cliente c = DBManager.ClienteRepo.FindById(this.id_cliente);
+            return c.nombre_cliente;
         }
 
         private string getCapacidad()
@@ -35,5 +37,9 @@ namespace MCP.db
             float capacidad =(float) Math.Ceiling((double)(this.capacidad));
             return capacidad.ToString() + " GB";
         }
+
+
+        
+       
     }
 }

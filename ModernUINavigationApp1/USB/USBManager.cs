@@ -75,6 +75,8 @@ namespace MCP.USB
                 string letter;
                 string serial;
                 float capacity = 0;
+                string nombre = "";
+                string tipo = "";
                 List<string> usb_list = new List<string>();
                 foreach (DriveInfo di in DriveInfo.GetDrives())
                 {
@@ -83,6 +85,8 @@ namespace MCP.USB
 
                         letter = di.RootDirectory.ToString().Substring(0, 2);
                         capacity = (float)(di.TotalSize * Math.Pow(10, -9));
+                        nombre = di.VolumeLabel.ToString();
+                        tipo = di.DriveType.ToString();
 
                         serial = usb_serial.getSerialNumberFromDriveLetter(letter);
 
@@ -98,7 +102,7 @@ namespace MCP.USB
                     if (!connected_devices.Contains(sn))
                     {
                         connected_devices.Add(sn);
-                        CheckIfExistUsb(capacity, sn);
+                        CheckIfExistUsb(capacity, sn, nombre,tipo);
                         //FireNewDeviceConnected(sn);
                     }
                 }
@@ -128,7 +132,7 @@ namespace MCP.USB
             }
         }
 
-        private static void CheckIfExistUsb(float capacity, string sn)
+        private static void CheckIfExistUsb(float capacity, string sn, string name, string tipo)
         {
             bool exist = FireNewDeviceConnected(sn);
             if (!exist)
@@ -140,7 +144,8 @@ namespace MCP.USB
                     numero_serie = sn,
                     capacidad = capacity,
                     //id_cliente = 0,
-                    marca = ""
+                    tipo_dispositivo = tipo,
+                    nombre_dispositivo = name
                     //cliente = DBManager.ClienteRepo.FindById(1)
                 };
                 Window window = new Window

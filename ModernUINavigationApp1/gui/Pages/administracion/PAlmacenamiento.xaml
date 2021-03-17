@@ -48,7 +48,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>-->
                     <DataGridTextColumn Width="90" Header="Tipo" ></DataGridTextColumn>
-                    <DataGridTextColumn Width="90*" Header="Dispositivo"></DataGridTextColumn>
+                    <DataGridTextColumn Width="90*" Header="Dispositivo" Binding="{Binding nombre_dispositivo}"></DataGridTextColumn>
                     <DataGridTextColumn Width="90*" Header="Cliente" Binding="{Binding nombre_cliente}"></DataGridTextColumn>
                     <DataGridTextColumn Width="100" Header="Capacidad" Binding="{Binding capacidad_string}"></DataGridTextColumn>
                     
