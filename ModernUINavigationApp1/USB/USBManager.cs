@@ -148,17 +148,15 @@ namespace MCP.USB
                     nombre_dispositivo = name
                     //cliente = DBManager.ClienteRepo.FindById(1)
                 };
-
-
                 Window window = new Window
                 {
                     Title = "Test",
-                    Content = new PSeleccionarCliente(usb),
-                    Height = 438.83,
-                    Width= 615,
-                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                    Content = new PClientes(usb)
 
                 };
+
+                window.WindowState = WindowState.Maximized;
+
                 window.ShowDialog();
 
                 //DBManager.UsbRepo.Add(usb);

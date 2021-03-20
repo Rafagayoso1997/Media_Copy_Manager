@@ -219,10 +219,6 @@ namespace MCP.gui.Pages.administracion
                 cliente = DBManager.ClienteRepo.FindById(id);
                 if (cliente != null)
                 {
-                    foreach(usb usb in DBManager.UsbRepo.FindByUserId(id))
-                    {
-                        DBManager.UsbRepo.Delete(usb.id_usb);
-                    }
                     DBManager.ClienteRepo.Delete(id);
                     refreshGrid();
 

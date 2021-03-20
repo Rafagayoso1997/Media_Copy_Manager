@@ -52,13 +52,6 @@ namespace MCP.db.repos
             return usb;
         }
 
-        public List<usb> FindByUserId(int id)
-        {
-            return (from c in DBManager.Context.usbs
-                          where c.id_cliente == id
-                          select c).ToList();
-        }
-
 
 
         public void Update(usb entity)

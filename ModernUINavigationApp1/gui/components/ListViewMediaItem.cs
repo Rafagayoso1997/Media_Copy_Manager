@@ -76,21 +76,6 @@ namespace MCP.gui.components
             {
                 ContextMenu menu = new ContextMenu();
                 MenuItem men = new MenuItem();
-                men.Header = "Copiar";
-                men.Click += Copy_Media;
-                menu.Items.Add(men);
-
-                men = new MenuItem();
-                men.Header = "Abrir en el explorador";
-                men.Click += Open_Media;
-                menu.Items.Add(men);
-
-                men = new MenuItem();
-                men.Header = "Enviar";
-                men.Click += Send_Media;
-                menu.Items.Add(men);
-
-                men = new MenuItem();
                 men.Header = "Eliminar";
                 men.Click += Delete_Media;
                 menu.Items.Add(men);
