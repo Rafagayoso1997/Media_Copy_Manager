@@ -76,21 +76,6 @@ namespace MCP.gui.components
             {
                 ContextMenu menu = new ContextMenu();
                 MenuItem men = new MenuItem();
-                men.Header = "Copiar";
-                men.Click += Copy_Media;
-                menu.Items.Add(men);
-
-                men = new MenuItem();
-                men.Header = "Abrir en el explorador";
-                men.Click += Open_Media;
-                menu.Items.Add(men);
-
-                men = new MenuItem();
-                men.Header = "Enviar";
-                men.Click += Send_Media;
-                menu.Items.Add(men);
-
-                men = new MenuItem();
                 men.Header = "Eliminar";
                 men.Click += Delete_Media;
                 menu.Items.Add(men);
@@ -127,18 +112,16 @@ namespace MCP.gui.components
 
         private void Delete_Media(object sender, EventArgs e)
         {
-            MenuItem item = (MenuItem)sender;
-            MessageBox.Show(item.Header.ToString() + " " + mf.titulo.ToString());
             if (mf != null)
             {
                 MessageBoxResult res = MessageBox.Show("¿Confirma que desea eliminar el archivo del catálogo?", "Información", MessageBoxButton.YesNo);
                 if (res == MessageBoxResult.Yes)
                 {
                     DBManager.MediaFilesRepo.DeleteEntity(mf);
-
-              
                     mf = null;
-                    AppMAnager.GlobalContentChanged();
+
+                   
+                    AppMAnager.GlobalContentChanged(true);
                 }
             }
            
