@@ -624,6 +624,17 @@ namespace MCP
               //  PEditarCatalogo_instance.reloadContent();
         }
 
+        public static void GlobalContentChanged(bool change)
+        {
+            
+
+            if ("PHome" == current_page)
+                PHome._PHome.reloadContent(change);
+            // else
+            //  if ("PEditarCatalogo" == current_page && PEditarCatalogo_instance != null)
+            //  PEditarCatalogo_instance.reloadContent();
+        }
+
         /** Busca si existe algun fichero de subtitulo asociado al fichero 
          pasado por parametros*/
         public static string FindSubtitleFile(FileInfo fi)

@@ -22,6 +22,8 @@ namespace MCP.gui.Pages
             InitializeComponent();
 
             startGrid();
+
+            
             //combo puntos de copia
             /*if (!AppMAnager.CurrentUser().is_admin)
             {

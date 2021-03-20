@@ -234,6 +234,9 @@
     <Compile Include="gui\Pages\administracion\PCoeficientes.xaml.cs">
       <DependentUpon>PCoeficientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="gui\Pages\administracion\PSeleccionarCliente.xaml.cs">
+      <DependentUpon>PSeleccionarCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="gui\Pages\administracion\PTrabajadores.xaml.cs">
       <DependentUpon>PTrabajadores.xaml</DependentUpon>
     </Compile>
@@ -310,6 +313,10 @@
     <Page Include="gui\Pages\administracion\PCoeficientes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="gui\Pages\administracion\PSeleccionarCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="gui\Pages\administracion\PTrabajadores.xaml">
       <Generator>MSBuild:Compile</Generator>

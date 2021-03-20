@@ -10,8 +10,5 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/model1.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/model1.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/disco-duro-externo.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/disco-flash.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/llamada.png")]
 
 

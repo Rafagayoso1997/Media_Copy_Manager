@@ -181,6 +181,29 @@ namespace MCP.gui.Pages
             treeContentChanged = false;
         }
 
+        public async void reloadContent(bool change)
+        {
+            Console.WriteLine("Start Home Content Load...");
+
+            //DBManager.Reset_Context();
+            TbxSearch.IsEnabled = false;
+            BtnClear.IsEnabled = false;
+            ShowLoader();
+
+            await AppMAnager.Load_Movies_Tree(_treeView, new HomeIconItemClickHandler(), Dispatcher, true);
+
+            refreshComboCategorias();
+            refreshAnnos();
+            refreshGeneros();
+            _listViewContent.Items.Clear();
+
+            TbxSearch.IsEnabled = true;
+            BtnClear.IsEnabled = true;
+            HideLoader();
+            Console.WriteLine("Home Content Loaded");
+            treeContentChanged = true;
+        }
+
         private async void ComboCategoriasChanged(object sender, SelectionChangedEventArgs args)
         {
             if (!treeContentChanged)
